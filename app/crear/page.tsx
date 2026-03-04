@@ -1,5 +1,5 @@
 import RouterApp from "@/app/components/RouterApp";
 
-export default function Home() {
+export default function CrearPage() {
   return <RouterApp />;
 }
