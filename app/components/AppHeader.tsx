@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 type AppHeaderProps = {
   brand: string;
-  active: "actors" | "crear";
+  active: "actors" | "movies" | "crear" | "crear-pelicula";
 };
 
 export default function AppHeader({ brand, active }: AppHeaderProps) {
@@ -14,6 +14,14 @@ export default function AppHeader({ brand, active }: AppHeaderProps) {
       : "text-slate-700 hover:text-blue-600";
   const createLinkClass =
     active === "crear"
+      ? "text-blue-600 font-semibold"
+      : "text-slate-700 hover:text-blue-600";
+  const createMovieLinkClass =
+    active === "crear-pelicula"
+      ? "text-blue-600 font-semibold"
+      : "text-slate-700 hover:text-blue-600";
+  const moviesLinkClass =
+    active === "movies"
       ? "text-blue-600 font-semibold"
       : "text-slate-700 hover:text-blue-600";
 
@@ -32,7 +40,7 @@ export default function AppHeader({ brand, active }: AppHeaderProps) {
             <input
               aria-label="Quick search"
               type="text"
-              placeholder="Search actors..."
+              placeholder="Search catalog..."
               className="w-full rounded-md border border-slate-200 bg-slate-100 py-2 pl-9 pr-3 text-sm text-slate-600 outline-none focus:border-blue-300"
             />
             <span className="absolute left-3 top-2 text-slate-400">⌕</span>
@@ -46,8 +54,14 @@ export default function AppHeader({ brand, active }: AppHeaderProps) {
           <Link to="/actors" className={actorsLinkClass}>
             Actors
           </Link>
+          <Link to="/movies" className={moviesLinkClass}>
+            Movies
+          </Link>
           <Link to="/crear" className={createLinkClass}>
             Add Actor
+          </Link>
+          <Link to="/crear-pelicula" className={createMovieLinkClass}>
+            Add Movie
           </Link>
           <Link to="/" className="hidden text-slate-700 hover:text-blue-600 md:inline">
             Settings
